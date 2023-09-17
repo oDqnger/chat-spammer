@@ -21,4 +21,4 @@ python main.py
 
 # NOTE:
 This software does not have any limit, so you can break your PC or get in trouble by doing this. When the program asks you to input the delay after each message has been sent, I highly recommend that you enter a delay above 0.2.
-If there are any problems with the code, you may open an issue for this repo. Or if you know how to fix it, you may as well open a pull request.
+If there are any problems with the code or if you're unable to run the code for whatever reason, you may open an issue for this repo. Or if you know how to fix it, you may as well open a pull request.
