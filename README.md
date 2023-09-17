@@ -13,7 +13,7 @@ To run this, make sure you have python 3+ installed in your PC and make sure you
 pip install keyboard
 ```
 
-Then download the main.py file, navigate to the main.py file in your cmd and run the file.
+Then download the main.py file, navigate to the directory in which the main.py is stored and run the file.
 
 ```
 python main.py
