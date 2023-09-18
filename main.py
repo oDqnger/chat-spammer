@@ -2,15 +2,26 @@ import keyboard
 import time
 
 def change_settings():
-    exit_hotkey, delay, how_long, amount_of_times = "", "", "", ""
-    message = input("What's the message you would like to spam? ")
+    message, exit_hotkey, delay, delay_all, how_long, amount_of_times = [],"", "", "", "", ""
     while True:
         try:
+            count = int(input("How many unique messages would you like to spam? "))
+            if count <= 0:
+                print("\nPlease enter a number greater than 0!\n")
+                continue
+
+            for x in range(0, count):
+                message.append(input("Enter the different types of messages you would like to spam: "))
+
             delay = float(input("How much delay would you like to have after a message has been spammed: "))
 
             if delay <= 0:
                 print("\nERROR! Please enter a number greater than 0.\n")
                 continue
+
+            delay_all = float(input("How much delay would you like to have after *ALL* the messages have been sent: "))
+            if delay_all <= 0:
+                print("\nERROR! Please enter a number greater than 0.\n")
 
             exit_hotkey = input("Enter a hotkey (can be anything as long as it has one letter) to stop the spammer when you need to: ")
 
@@ -50,17 +61,19 @@ def change_settings():
 
         break
 
-    return [message, delay, exit_hotkey, how_long, amount_of_times]
+    return [message, delay, exit_hotkey, how_long, amount_of_times, delay_all]
 
-def autoclicker(message, delay):
-    keyboard.write(message)
-    keyboard.press("enter")
+def autoclicker(message, delay, delay_all):
+    for x in message:
+        keyboard.write(x)
+        keyboard.press("enter")
+        time.sleep(delay)
 
-    time.sleep(delay)
+    time.sleep(delay_all)
 
 def main():
 
-    message, delay, exit_hotkey, how_long, amount_of_times = change_settings()
+    message, delay, exit_hotkey, how_long, amount_of_times, delay_all = change_settings()
     while True:
         print("The spammer will begin in 5 seconds...")
         time.sleep(5)
@@ -73,14 +86,14 @@ def main():
                 if keyboard.is_pressed(exit_hotkey):
                     break
 
-                autoclicker(message, delay)
+                autoclicker(message, delay, delay_all)
                 end = time.time()
         else:
             for x in range(0, amount_of_times):
                 if keyboard.is_pressed(exit_hotkey):
                     break
 
-                autoclicker(message, delay)
+                autoclicker(message, delay, delay_all)
 
         print("\nSpammer ended.\n")
 
@@ -88,7 +101,7 @@ def main():
             prompt = input("Would you like to change the settings, would you like to resume or would you want to quit the spammer? (c/r/q): ").lower()
 
             if prompt == "c":
-                message, delay, exit_hotkey, how_long, amount_of_times = change_settings()
+                message, delay, exit_hotkey, how_long, amount_of_times, delay_all = change_settings()
                 break
             elif prompt == "r":
                 break
