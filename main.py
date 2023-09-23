@@ -20,7 +20,7 @@ def change_settings():
                 continue
 
             delay_all = float(input("How much delay would you like to have after *ALL* the messages have been sent: "))
-            if delay_all <= 0:
+            if delay_all < 0:
                 print("\nERROR! Please enter a number greater than 0.\n")
 
             exit_hotkey = input("Enter a hotkey (can be anything as long as it has one letter) to stop the spammer when you need to: ")
@@ -65,9 +65,14 @@ def change_settings():
 
 def autoclicker(message, delay, delay_all):
     for x in message:
-        keyboard.write(x)
-        keyboard.press("enter")
+        try:
+            keyboard.press(x)
+        except:
+            keyboard.write(x)
+
         time.sleep(delay)
+        keyboard.press("enter")
+
 
     time.sleep(delay_all)
 
