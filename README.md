@@ -8,13 +8,20 @@ You are 100% responsible for the way you use this program. This program does not
 This is a program that spams/repeats a certain message through any chat application. This program allows you to set a custom message to send, it allows you to set the delay after each message has been sent (anything below 0.5s might break your pc), it allows you to set a timer for how long you want the spammer to be running and the amount of times you want the program to be sending the message.
 
 # How to run the program?
-To run this, make sure you have python 3+ installed in your PC and make sure you have the 'keyboard' library installed by doing this in your cmd:
+To run this, make sure you have python 3+ installed and git installed on your PC. If not, here are the links: [(https://git-scm.com/)](https://git-scm.com/downloads), ([https://www.python.org/](https://www.python.org/downloads/)). Go to these links and go through the download process.
+
+First, clone the git repo by running and navigate to the folder:
 ```
-pip install keyboard
+git clone https://github.com/oDqnger/chat-spammer.git
+cd chat-spammer
 ```
 
-Then download the main.py file, navigate to the directory in which the main.py is stored and run the file.
+Then install all the dependencies needed for this project
+```
+pip install -r requirements.txt
+```
 
+Then run the main.py file
 ```
 python main.py
 ```
